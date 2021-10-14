@@ -12,11 +12,16 @@ void setup() {
   }
 
 void loop() {
+  if (digitalRead(sw)==0) {
+    szamlalo=0;
+    Serial.println(szamlalo);}
+    
   most=digitalRead(outputCLK);
   if (most != ezelott)
   {
     if(digitalRead(outputDT) != most) { szamlalo--;}
     else { szamlalo++;}
+    szamlalo=constrain(szamlalo,-10,10);
     Serial.println(szamlalo);
   }
   ezelott=most;
