@@ -1,6 +1,9 @@
 int sw=13;
 int outputCLK = 11;
 int outputDT =12;
+int most=1;
+int ezelott=1;
+
 void setup() {
   Serial.begin(9600);
   Serial.println("Encoder kezelő program!");
@@ -8,10 +11,10 @@ void setup() {
   }
 
 void loop() {
-  for(int i=11;i<=13;i++) {
-    Serial.print(digitalRead(i));
-    Serial.print("; ");
+  most=digitalRead(outputCLK);
+  if (most != ezelott)
+  {
+    Serial.println("Tekerés van!!!");
   }
-  Serial.println("");
-
+  ezelott=most;
 }
