@@ -3,6 +3,7 @@ int outputCLK = 11;
 int outputDT =12;
 int most=1;
 int ezelott=1;
+int szamlalo=0;
 
 void setup() {
   Serial.begin(9600);
@@ -14,7 +15,9 @@ void loop() {
   most=digitalRead(outputCLK);
   if (most != ezelott)
   {
-    Serial.println("Tekerés van!!!");
+    if(digitalRead(outputDT) != most) { szamlalo--;}
+    else { szamlalo++;}
+    Serial.println(szamlalo);
   }
   ezelott=most;
 }
